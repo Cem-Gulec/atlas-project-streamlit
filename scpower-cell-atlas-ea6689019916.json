@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "scpower-cell-atlas",
+  "private_key_id": "ea6689019916fecce0618c3497101b0310d86904",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDMD3cAG4pe1gYn\nqEEDZhb2F9L0ly033wjdQmfDpUWccoMeDO8YIrsMl4Qo05uuvKI8ukE5QJ6qLt70\npdvfeI+wXDsS31VUk2FO6kuhx38IgvIaXC9HvouBs8yZc5qYyTpTz/Bxgb6fDcGB\nZZM0Emq3k6C5Ih77pKEz6rqT4PzqY7cj9TJ4+fr3ewjCI+yVrFtPffr2QsKPAGgr\nI+t3r1xt9aZ+S3zcl9PO5iNhocTy1yIPIaouc9z2No0ywk4zFbMOoGG5TStFBMrk\nh/u2uU2IvPIIdhIh+P2+jDXmoK8zV0Mz2e+huiB/3ikPuuf1ifXkCfaP+tt0BGAN\nDQG8+WMfAgMBAAECggEAHf2n37wsegO6o9l2tKksdr7JomkVnECLbPl1hqujr3ql\nCqWb/lAcbZ1XLyjqmKPgtEwrid6Vcy2wVwSJbC6r75+ejweD4wpGIvMMapqHcRjN\nvFIQINtAZa+nQmZbMllg2TCWhhgri/TZm8rx95U9Wf24gX0iUJnBl3/ILDPE+C2s\nZ3nfueOVRghXBEZ3gNNwyD+grjMr84kAc3OzQHf5xPCB0dbdclv/FT+i2pSBkFnd\n3/oB3nS0cbXRRfof1q3qJ3Dv+wY2Lpz8dHc/L5cLjhCum11WHvLdoTQu2eEG5T/O\nF9O5OHIbvUA2KlZfmzARavi8gIcNOB3OEjwddLRCAQKBgQDq4fnBTr4AVl1OyZTL\n7sR2pHdv5mYJIGreIXNe9nyRZDQnXKyfJ1sVuZ/XW5QzU0p61PgIw9gwCcRHelmm\nm9m/aJJu2XEx7JsqpWY0Va8WdZ8jYxnB9rRO75wx2Sb5HVUZKLEKFj39RpZURcus\nOLKxw9GaKlgE42gWA/V5GjEeeQKBgQDeaBZ3cZaUUGHYQOsX9AKkJQ+pT/jyPLLG\nhHnwU9LXBu5ktBnIM0kJUbGrbuTY754ito0W/Es575Ncy6rWxaVkMoRlX7HXn1hS\nYy4DlS4QqprrPiIDuRAK+rCm+X3xdDxVpDOAAxqk8RiJqiH/vGyeaRfX5feFyibB\nh4uijeZIVwKBgGFyu6H9v0p4imHDtF4fg5cNiRf96NtkfbIHAsylSu0vO4wRIPUu\n6NVMnApHTmc06TOo4/cO+cSEaNCW7Fb5Vg/ZnNcsk4/48C9zS8HuwqN4zTtrRCZ6\n6jfNpWnxBABasRGtFjZvH+zSuk/gXS3ooAqsiWuCod31Uxu/LLq/qR1RAoGAcrpA\n9Kacpa99eb+rRnTyM9iGZrHBWrwjALLv8CBdf9ysdzhMoHCMOYlx3FxdIucgrQl8\naKIG8ED8xH6vhxD3y2Mf1udxZyhkuEM/RkvbMm+/cKBhjYgWlYNSQyAqbramNQt6\nIYv4X6ObI9CmrzR015ag3RddAyAPs/+G8Xi/lQsCgYEApdmVZXCiPaI7AgdeB/im\nje9dxqFI6VDekl7y4+75IkAhyxYBZ6REl4kuly/NHiDifBppsA5HGNA7vWd/9FVm\nL56a71sF5MA9/HrB4NK4gDNZqx9qo7SuShu1OjH3GmTFjnvtG0W68UmTk2+DDeqh\nhrSWHXgECazaL7hy1o2OBpo=\n-----END PRIVATE KEY-----\n",
+  "client_email": "cell-atlas@scpower-cell-atlas.iam.gserviceaccount.com",
+  "client_id": "108438918668096649073",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/cell-atlas%40scpower-cell-atlas.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

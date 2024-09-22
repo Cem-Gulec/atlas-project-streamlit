@@ -1,0 +1,54 @@
+</br>
+Experimental design suggestions are made in a way to optimize the power of the experiment.</br>
+</br>
+scPower offers optimization for two different experimental settings:
+<ul>
+    <li><strong>Detect cell types</strong> (referred to as "cell type detection probability" in the figure above)</li>
+    <li><strong>Detect DE/eQTL genes</strong> (referred to as "Overall detection power") </li>
+</ul>
+
+This website is specifically designed for 10X Genomics experiments. 
+We refer users of other single cell RNA-seq technologies, such as Drop-seq and Smart-seq, to the  <a href="https://github.com/heiniglab/scPower">R package</a>, which allows higher level of customization and is also suitable for those platforms.
+</br>
+<h4>Detect DE/eQTL genes</h4>
+
+In this section you can find the parameter combination which maximizes the detection power of DE / eQTL genes. The <strong>main plot</strong> on the right side shows the <strong>detection power</strong> depending on parameter combinations. You can choose 2 out of the 3 cost determining factors (sample size, cells per person, read depth) to be displayed on x- and y-Axis. Due to the fixed budget, the third one can be determined and will be displayed as circle size.</br>
+Depending on the overall budget, not all parameter combinations will be possible and some spots will stay white in the grid. An arrow called "selected study" points on the study with the highest detection power and the two plots below visualize the power curves for this study. The arrow can be set to any parameter combination by clicking on the main plot.</br>
+</br>
+The detection power is the product of the <strong>expression probability</strong> and the <strong>DE/eQTL power</strong>. The expression probability shows how likely it is that the DE/eQTL genes are expressed, while the DE/eQTL power shows how likely it is to detect the genes as significant, given that they are expressed. The <strong>two lower plots</strong> show the influence of the parameters on each of the probabilities. The plot on the left depicts the influence of the parameter on the x axis, while the parameter on the y axis is kept constant (taking the value of the selected study). The plots on the right shows the same for the parameter on the y axis.</br>
+</br>
+The power analysis can be tailored to the users experimental setup with a lot of different parameters.</br> 
+In case some parameters are unknown, the user can fall back to the defaults we provide. </br>
+</br>
+The parameters are divided into different categories:
+
+<ul>
+    <li><strong>General parameters</strong></li>
+    
+    <li><strong>Multiple testing correction</strong></br>
+Both the p-value and the multiple testing strategy can be chosen. We recommend using FWER adjustement for eQTL studies and FDR adjustment for DE studies.</li>
+    
+    <li><strong>Mapping and multiplet estimation</strong></br>
+The more cells are loaded on a lane, the more multiplets are produced. These need to be discared before the analysis. Furthermore, since multiplets have a higher fraction of reads per cell than singlets, higher multiplet rates also reduce the target read depth.</li>
+
+    <li><strong>Expression cutoffs</strong></br>
+A gene is defined as expressed, if it has a certain fraction of UMI counts per gene in a certain fraction of individuals (both parameters can be set). This influences the expression probability.</li>
+
+    <li><strong>Special parameters</strong></br>
+The method of power calculation can be changed to speed up calculation or to increase accuracy (especially important for eQTL calculation).</li>
+</ul>
+    
+<h4>Detect cell types</h4>
+This section determines the power to detect a sufficient number of cells from a cell type of interest in each individual. This is important as a cell-type specific DE or eQTL analysis is only possible if enough cells of this cell type are detected. The method calculates the minimal number of cells per individual which are necessary to reach a sufficient power threshold.
+
+<h4>References</h4>
+
+A detailed description of the complete model can be found in our publication:</br>
+<a href="https://doi.org/10.1038/s41467-021-26779-7">Schmid, K. T. et al. scPower accelerates and optimizes the design of multi-sample single cell transcriptomic studies. Nature Communications (2021)</a></br>
+</br>
+All code including an offline version of this website, build with R shiny, is available as an R package on
+<a href="https://github.com/heiniglab/scPower">Github</a>.</br> 
+With the R package, the user can also fit and incorporate own priors for expression probabilities and effect sizes. This is due to runtime reasons not possible over the webserver.</br> 
+The package contains a detailed introduction vignette explaining all necessary steps for the inclusion of custom priors.
+</br>
+
