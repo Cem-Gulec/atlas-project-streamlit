@@ -226,8 +226,6 @@ def main():
         st.session_state.scatter_data = None
     if 'influence_data' not in st.session_state:
         st.session_state.influence_data = None
-    if 'show_user_options' not in st.session_state:
-        st.session_state.show_user_options = False
     if 'success_message' not in st.session_state:
         st.session_state.success_message = st.empty()
 
@@ -239,7 +237,43 @@ def main():
 
     # Create scatter plot
     if isinstance(st.session_state.scatter_data, list) and len(st.session_state.scatter_data) > 0:
-        # Subheader with hover effect
+        organism = st.selectbox("Organisms", ["Homo sapiens", "Mus musculus"])
+        assay = st.selectbox("Assays", ["10x 3' v2", "10x 3' v3", "Smart-seq2", "10x 5' v1", "10x 5' v2" ])
+        tissue = st.selectbox("Tissues", sorted(["PBMC"                            ,"lingula of left lung",
+                                        "prostate gland"                  ,"lamina propria",
+                                        "vasculature"                     ,"limb muscle",
+                                        "urethra"                         ,"blood",
+                                        "gastrocnemius"                   ,"breast",
+                                        "mucosa"                          ,"esophagus muscularis mucosa",
+                                        "anterior wall of left ventricle" ,"skin of leg",
+                                        "ileum"                           ,"lung",
+                                        "thoracic lymph node"             ,"mesenteric lymph node",
+                                        "bone marrow"                     ,"skeletal muscle tissue",
+                                        "liver"                           ,"spleen",
+                                        "omentum"                         ,"caecum",
+                                        "thymus"                          ,"duodenum",
+                                        "transverse colon"                ,"jejunal epithelium",
+                                        "trachea"                         ,"inguinal lymph node",
+                                        "lymph node"                      ,"parotid gland",
+                                        "anterior part of tongue"         ,"posterior part of tongue",
+                                        "mammary gland"                   ,"endometrium",
+                                        "myometrium"                      ,"eye",
+                                        "conjunctiva"                     ,"adipose tissue",
+                                        "subcutaneous adipose tissue"     ,"skin of body",
+                                        "cardiac atrium"                  ,"cardiac ventricle",
+                                        "exocrine pancreas"               ,"skin of abdomen",
+                                        "skin of chest"                   ,"uterus",
+                                        "muscle of pelvic diaphragm"      ,"submandibular gland",
+                                        "cornea"                          ,"retinal neural layer",
+                                        "sclera"                          ,"bladder organ",
+                                        "large intestine"                 ,"small intestine",
+                                        "muscle of abdomen"               ,"coronary artery",
+                                        "kidney"                          ,"muscle tissue",
+                                        "rectus abdominis muscle"         ,"endocrine pancreas",
+                                        "aorta"                           ,"islet of Langerhans"]))
+        celltype = st.selectbox("Cell Types", sorted(["CD14+ Monocytes","CD4 T cells","CD8 T cells","FCGR3A+ Monocytes","NK cells","Dendritic cells","B cells"                                                                   ,"macrophage","epithelial cell of prostate","lymphocyte","fibroblast","luminal cell of prostate epithelium","smooth muscle cell of prostate","endothelial cell","mesenchymal stem cell","smooth muscle cell","Schwann cell","skeletal muscle satellite cell","B cell","cell of skeletal muscle","T cell","leukocyte","basal cell of prostate epithelium","seminal vesicle glandular cell","fibroblast of connective tissue of prostate","prostate gland microvascular endothelial cell","urethra urothelial cell","CD16-negative, CD56-bright natural killer cell, human","naive B cell","plasmacytoid dendritic cell","CD16-positive, CD56-dim natural killer cell, human","naive thymus-derived CD4-positive, alpha-beta T cell","CD14-low, CD16-positive monocyte","CD14-positive monocyte","naive thymus-derived CD8-positive, alpha-beta T cell","CD8-positive, alpha-beta memory T cell","mature NK T cell","memory B cell","mucosal invariant T cell","natural killer cell","regulatory T cell","conventional dendritic cell","platelet","plasma cell","gamma-delta T cell","plasmablast","erythrocyte","hematopoietic stem cell","slow muscle cell","skeletal muscle fiber","endothelial cell of vascular tree","skeletal muscle fibroblast","fast muscle cell","luminal epithelial cell of mammary gland","subcutaneous fat cell","squamous epithelial cell","basal cell","myoepithelial cell of mammary gland","basal epithelial cell of tracheobronchial tree","glandular epithelial cell","endothelial cell of lymphatic vessel","contractile cell","enteric smooth muscle cell","mast cell","fat cell","cardiac muscle cell","professional antigen presenting cell","fibroblast of cardiac tissue","cardiac endothelial cell","epithelial cell of alveolus of lung","respiratory basal cell","alveolar macrophage","bronchial epithelial cell","basal epithelial cell of prostatic duct","skin fibroblast","epithelial cell of sweat gland","basal cell of epidermis","sebaceous gland cell","keratinocyte","CD4-positive helper T cell","effector memory CD8-positive, alpha-beta T cell, terminally differentiated","CD8-positive, alpha-beta memory T cell, CD45RO-positive","effector memory CD4-positive, alpha-beta T cell","classical monocyte","non-classical monocyte","animal cell","T follicular helper cell","alpha-beta T cell","germinal center B cell","dendritic cell, human","group 3 innate lymphoid cell","erythroid lineage cell","progenitor cell","megakaryocyte","monocyte","endothelial cell of hepatic sinusoid","hepatocyte","tracheal goblet cell","ciliated cell","secretory cell","CD8-positive, alpha-beta T cell","neutrophil","CD4-positive, alpha-beta memory T cell","CD8-positive, alpha-beta cytokine secreting effector T cell","type I NK T cell","effector CD8-positive, alpha-beta T cell","effector CD4-positive, alpha-beta T cell","innate lymphoid cell","CD141-positive myeloid dendritic cell","intermediate monocyte","stromal cell","CD1c-positive myeloid dendritic cell","adventitial cell","duct epithelial cell","epithelial cell","vein endothelial cell","pericyte","fibroblast of breast","vascular associated smooth muscle cell","endothelial cell of artery","epithelial cell of uterus","myometrial cell","conjunctival epithelial cell","microglial cell","eye photoreceptor cell","Mueller cell","epithelial cell of lacrimal sac","keratocyte","myofibroblast cell","muscle cell","CD8-positive, alpha-beta cytotoxic T cell","erythroid progenitor cell","granulocyte","common myeloid progenitor","CD4-positive, alpha-beta T cell","pancreatic acinar cell","myeloid cell","pancreatic stellate cell","pancreatic ductal cell","type B pancreatic cell","club cell","ionocyte","naive regulatory T cell","medullary thymic epithelial cell","capillary endothelial cell","corneal epithelial cell","radial glial cell","stem cell","retinal blood vessel endothelial cell","melanocyte","enterocyte of epithelium of large intestine","large intestine goblet cell","paneth cell of colon","transit amplifying cell of colon","intestinal enteroendocrine cell","respiratory goblet cell","enterocyte of epithelium of small intestine","transit amplifying cell of small intestine","small intestine goblet cell","paneth cell of epithelium of small intestine","intestinal crypt stem cell of small intestine"                             ,"DN3 thymocyte","DN1 thymic pro-T cell","skeletal muscle satellite stem cell","bladder urothelial cell","kidney epithelial cell","enterocyte","intestinal crypt stem cell","goblet cell","basophil","lung ciliated cell","dendritic cell","type I pneumocyte","lung microvascular endothelial cell","type II pneumocyte","thymocyte","connective tissue cell","pancreatic A cell","pancreatic D cell"]))
+        st.markdown("<br><br>", unsafe_allow_html=True)
+
         st.markdown("""
         <div class="hover-text">
             <h3>Scatter Plot</h3>
@@ -289,67 +323,14 @@ def main():
         fig = create_influence_plot(st.session_state.influence_data, parameter_vector)
         if fig is not None:
             st.plotly_chart(fig)
-            st.session_state.show_user_options = True
     else:
         st.warning("No influence data available. Please check your data source.")
     
     # data shown as json as well
     if isinstance(st.session_state.scatter_data, list):
-        st.write(f"Number of items: {len(st.session_state.scatter_data)}")
-    st.json(st.session_state.scatter_data)
-    
-    # after plots are being drawn, show user options
-    if st.session_state.show_user_options:
-        st.markdown("<br><br>", unsafe_allow_html=True)
-        
-        st.subheader("Further Operations")
-        data_source = st.radio("Data source", ["Upload Data", "Use Our Model"])
-        if data_source == "Upload Data":
-            uploaded_file = st.file_uploader("Upload Your Own Data (optional)")
-
-            if uploaded_file is not None:
-                file_extension = os.path.splitext(uploaded_file.name)[1].lower()
-                if file_extension == ".json":
-                    st.success("File uploaded successfully!")
-                else:
-                    st.error("Error: The uploaded file is not a valid JSON file.")
-        elif data_source == "Use Our Model":
-            organism = st.selectbox("Organisms", ["Homo sapiens", "Mus musculus"])
-            assay = st.selectbox("Assays", ["10x 3' v2", "10x 3' v3", "Smart-seq2", "10x 5' v1", "10x 5' v2" ])
-            tissue = st.selectbox("Tissues", sorted(["PBMC"                            ,"lingula of left lung",
-                                            "prostate gland"                  ,"lamina propria",
-                                            "vasculature"                     ,"limb muscle",
-                                            "urethra"                         ,"blood",
-                                            "gastrocnemius"                   ,"breast",
-                                            "mucosa"                          ,"esophagus muscularis mucosa",
-                                            "anterior wall of left ventricle" ,"skin of leg",
-                                            "ileum"                           ,"lung",
-                                            "thoracic lymph node"             ,"mesenteric lymph node",
-                                            "bone marrow"                     ,"skeletal muscle tissue",
-                                            "liver"                           ,"spleen",
-                                            "omentum"                         ,"caecum",
-                                            "thymus"                          ,"duodenum",
-                                            "transverse colon"                ,"jejunal epithelium",
-                                            "trachea"                         ,"inguinal lymph node",
-                                            "lymph node"                      ,"parotid gland",
-                                            "anterior part of tongue"         ,"posterior part of tongue",
-                                            "mammary gland"                   ,"endometrium",
-                                            "myometrium"                      ,"eye",
-                                            "conjunctiva"                     ,"adipose tissue",
-                                            "subcutaneous adipose tissue"     ,"skin of body",
-                                            "cardiac atrium"                  ,"cardiac ventricle",
-                                            "exocrine pancreas"               ,"skin of abdomen",
-                                            "skin of chest"                   ,"uterus",
-                                            "muscle of pelvic diaphragm"      ,"submandibular gland",
-                                            "cornea"                          ,"retinal neural layer",
-                                            "sclera"                          ,"bladder organ",
-                                            "large intestine"                 ,"small intestine",
-                                            "muscle of abdomen"               ,"coronary artery",
-                                            "kidney"                          ,"muscle tissue",
-                                            "rectus abdominis muscle"         ,"endocrine pancreas",
-                                            "aorta"                           ,"islet of Langerhans"]))
-            celltype = st.selectbox("Cell Types", sorted(["CD14+ Monocytes","CD4 T cells","CD8 T cells","FCGR3A+ Monocytes","NK cells","Dendritic cells","B cells"                                                                   ,"macrophage","epithelial cell of prostate","lymphocyte","fibroblast","luminal cell of prostate epithelium","smooth muscle cell of prostate","endothelial cell","mesenchymal stem cell","smooth muscle cell","Schwann cell","skeletal muscle satellite cell","B cell","cell of skeletal muscle","T cell","leukocyte","basal cell of prostate epithelium","seminal vesicle glandular cell","fibroblast of connective tissue of prostate","prostate gland microvascular endothelial cell","urethra urothelial cell","CD16-negative, CD56-bright natural killer cell, human","naive B cell","plasmacytoid dendritic cell","CD16-positive, CD56-dim natural killer cell, human","naive thymus-derived CD4-positive, alpha-beta T cell","CD14-low, CD16-positive monocyte","CD14-positive monocyte","naive thymus-derived CD8-positive, alpha-beta T cell","CD8-positive, alpha-beta memory T cell","mature NK T cell","memory B cell","mucosal invariant T cell","natural killer cell","regulatory T cell","conventional dendritic cell","platelet","plasma cell","gamma-delta T cell","plasmablast","erythrocyte","hematopoietic stem cell","slow muscle cell","skeletal muscle fiber","endothelial cell of vascular tree","skeletal muscle fibroblast","fast muscle cell","luminal epithelial cell of mammary gland","subcutaneous fat cell","squamous epithelial cell","basal cell","myoepithelial cell of mammary gland","basal epithelial cell of tracheobronchial tree","glandular epithelial cell","endothelial cell of lymphatic vessel","contractile cell","enteric smooth muscle cell","mast cell","fat cell","cardiac muscle cell","professional antigen presenting cell","fibroblast of cardiac tissue","cardiac endothelial cell","epithelial cell of alveolus of lung","respiratory basal cell","alveolar macrophage","bronchial epithelial cell","basal epithelial cell of prostatic duct","skin fibroblast","epithelial cell of sweat gland","basal cell of epidermis","sebaceous gland cell","keratinocyte","CD4-positive helper T cell","effector memory CD8-positive, alpha-beta T cell, terminally differentiated","CD8-positive, alpha-beta memory T cell, CD45RO-positive","effector memory CD4-positive, alpha-beta T cell","classical monocyte","non-classical monocyte","animal cell","T follicular helper cell","alpha-beta T cell","germinal center B cell","dendritic cell, human","group 3 innate lymphoid cell","erythroid lineage cell","progenitor cell","megakaryocyte","monocyte","endothelial cell of hepatic sinusoid","hepatocyte","tracheal goblet cell","ciliated cell","secretory cell","CD8-positive, alpha-beta T cell","neutrophil","CD4-positive, alpha-beta memory T cell","CD8-positive, alpha-beta cytokine secreting effector T cell","type I NK T cell","effector CD8-positive, alpha-beta T cell","effector CD4-positive, alpha-beta T cell","innate lymphoid cell","CD141-positive myeloid dendritic cell","intermediate monocyte","stromal cell","CD1c-positive myeloid dendritic cell","adventitial cell","duct epithelial cell","epithelial cell","vein endothelial cell","pericyte","fibroblast of breast","vascular associated smooth muscle cell","endothelial cell of artery","epithelial cell of uterus","myometrial cell","conjunctival epithelial cell","microglial cell","eye photoreceptor cell","Mueller cell","epithelial cell of lacrimal sac","keratocyte","myofibroblast cell","muscle cell","CD8-positive, alpha-beta cytotoxic T cell","erythroid progenitor cell","granulocyte","common myeloid progenitor","CD4-positive, alpha-beta T cell","pancreatic acinar cell","myeloid cell","pancreatic stellate cell","pancreatic ductal cell","type B pancreatic cell","club cell","ionocyte","naive regulatory T cell","medullary thymic epithelial cell","capillary endothelial cell","corneal epithelial cell","radial glial cell","stem cell","retinal blood vessel endothelial cell","melanocyte","enterocyte of epithelium of large intestine","large intestine goblet cell","paneth cell of colon","transit amplifying cell of colon","intestinal enteroendocrine cell","respiratory goblet cell","enterocyte of epithelium of small intestine","transit amplifying cell of small intestine","small intestine goblet cell","paneth cell of epithelium of small intestine","intestinal crypt stem cell of small intestine"                             ,"DN3 thymocyte","DN1 thymic pro-T cell","skeletal muscle satellite stem cell","bladder urothelial cell","kidney epithelial cell","enterocyte","intestinal crypt stem cell","goblet cell","basophil","lung ciliated cell","dendritic cell","type I pneumocyte","lung microvascular endothelial cell","type II pneumocyte","thymocyte","connective tissue cell","pancreatic A cell","pancreatic D cell"]))
-            
+        st.write(f"Data in json format ({len(st.session_state.scatter_data)} items):")
+    st.json(st.session_state.scatter_data, expanded=False)
+       
 
 if __name__ == "__main__":
     main()
