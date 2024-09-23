@@ -67,7 +67,7 @@ def show_home_page():
     </div>
     """, unsafe_allow_html=True)
 
-    col1, col2, col3 = st.columns([4, 5.5, 6])
+    col1, col2, col3, col4  = st.columns([5, 8, 6, 6])
 
     with col1:
         if st.button("📘 Learn More"):
@@ -81,5 +81,10 @@ def show_home_page():
 
     with col3:
         st.markdown("""
-        <a href="https://github.com/heiniglab/scPower" target="_blank" class="custom-button">📄 Our Github Page</a>
+        <a href="https://github.com/heiniglab/scPower" target="_blank" class="custom-button">Our Github Page</a>
+        """, unsafe_allow_html=True)
+    
+    with col4:
+        st.markdown("""
+        <a href="https://scpower-cell-atlas.readthedocs.io/en/latest/" target="_blank" class="custom-button">Documentation</a>
         """, unsafe_allow_html=True)
