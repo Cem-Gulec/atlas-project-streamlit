@@ -19,7 +19,6 @@ def show_description_page():
 
     st.info("This website is specifically designed for 10X Genomics experiments. We refer users of other single cell RNA-seq technologies, such as Drop-seq and Smart-seq, to the [R package](https://github.com/heiniglab/scPower), which allows higher level of customization and is also suitable for those platforms.")
 
-    # Detect DE/eQTL genes section
     st.header("Detect DE/eQTL genes")
     st.write("""
     In this section you can find the parameter combination which maximizes the detection power of DE / eQTL genes. The **main plot** on the right side shows the **detection power** depending on parameter combinations. You can choose 2 out of the 3 cost determining factors (sample size, cells per person, read depth) to be displayed on x- and y-Axis. Due to the fixed budget, the third one can be determined and will be displayed as circle size.
@@ -29,7 +28,6 @@ def show_description_page():
     The detection power is the product of the **expression probability** and the **DE/eQTL power**. The expression probability shows how likely it is that the DE/eQTL genes are expressed, while the DE/eQTL power shows how likely it is to detect the genes as significant, given that they are expressed. The **two lower plots** show the influence of the parameters on each of the probabilities.
     """)
 
-    # Parameters section
     st.subheader("Parameters")
     st.write("The power analysis can be tailored to the users experimental setup with a lot of different parameters. In case some parameters are unknown, the user can fall back to the defaults we provide.")
 
@@ -46,13 +44,11 @@ def show_description_page():
         if description:
             st.write(description)
 
-    # Detect cell types section
     st.header("Detect cell types")
     st.write("""
     This section determines the power to detect a sufficient number of cells from a cell type of interest in each individual. This is important as a cell-type specific DE or eQTL analysis is only possible if enough cells of this cell type are detected. The method calculates the minimal number of cells per individual which are necessary to reach a sufficient power threshold.
     """)
 
-    # References section
     st.header("References")
     st.write("""
     A detailed description of the complete model can be found in our publication:
