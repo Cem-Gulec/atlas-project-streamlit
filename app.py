@@ -10,6 +10,10 @@ from googleapiclient.discovery import build
 from google.oauth2 import service_account
 from io import BytesIO
 
+from home import show_home_page
+from description import show_description_page
+from license import show_license_page
+
 # Function to set up Google Drive API client
 def get_gdrive_service():
     creds = service_account.Credentials.from_service_account_file(
@@ -171,7 +175,7 @@ def create_influence_plot(data, parameter_vector):
 
     return fig
 
-def main():
+def perform_analysis():
     st.title("Detect DE/eQTL genes")
     scatter_file_id   = "1NkBP3AzLWuXKeYwgtVdTYxrzLjCuqLkR"
     influence_file_id = "1viAH5OEyhSoQjdGHi2Cm0_tFHrr1Z3GQ"
@@ -378,7 +382,29 @@ def main():
             st.plotly_chart(fig)
     else:
         st.warning("No influence data available. Please check your data source.")
-       
+
+def main():
+    st.set_page_config(initial_sidebar_state="collapsed")
+    
+    if 'page' not in st.session_state:
+        st.session_state.page = "Home"
+
+    st.sidebar.title("Navigation")
+    pages = ["Home", "Description", "Detect DE/eQTL Genes", "Detect Cell Types", "License Statement"]
+    page = st.sidebar.radio("", pages, index=pages.index(st.session_state.page))
+
+    if page != st.session_state.page:
+        st.session_state.page = page
+        st.rerun()
+
+    if st.session_state.page == "Home":
+        show_home_page()
+    elif st.session_state.page == "Description":
+        show_description_page()
+    elif st.session_state.page == "Detect DE/eQTL Genes":
+        perform_analysis()
+    elif st.session_state.page == "License Statement":
+        show_license_page()      
 
 if __name__ == "__main__":
     main()
