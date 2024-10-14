@@ -18,6 +18,7 @@ import json
 from home import show_home_page
 from description import show_description_page
 from license import show_license_page
+from tutorial import show_tutorial_page
 
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
@@ -491,7 +492,7 @@ def main():
         st.session_state.page = "Home"
 
     st.sidebar.title("Navigation")
-    pages = ["Home", "Description", "Detect DE/eQTL Genes", "Detect Cell Types", "License Statement"]
+    pages = ["Home", "Description", "Tutorial", "Detect DE/eQTL Genes", "Detect Cell Types", "License Statement"]
     page = st.sidebar.radio("", pages, index=pages.index(st.session_state.page))
 
     if page != st.session_state.page:
@@ -502,6 +503,8 @@ def main():
         show_home_page()
     elif st.session_state.page == "Description":
         show_description_page()
+    elif st.session_state.page == "Tutorial":
+        show_tutorial_page()
     elif st.session_state.page == "Detect DE/eQTL Genes":
         perform_analysis()
     elif st.session_state.page == "License Statement":
