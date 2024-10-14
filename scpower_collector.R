@@ -85,6 +85,8 @@ tryCatch({
     reactionsPerKit = reactionsPerKit
   )
 
+  colnames(power.study.plot)[2]<-"Detection.power"
+
   # Convert the result to JSON
   result_json <- toJSON(power.study.plot, auto_unbox = TRUE)
 

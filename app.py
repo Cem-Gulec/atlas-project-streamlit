@@ -262,10 +262,10 @@ def perform_analysis():
         st.session_state.success_message = st.empty()
 
     # Fetch initial data if not already present
-    if st.session_state.scatter_data is None:
+    '''if st.session_state.scatter_data is None:
         st.session_state.scatter_data = read_json_file("./scPower_shiny/power_study_plot.json")
     if st.session_state.influence_data is None:
-        st.session_state.influence_data = read_json_file("./scPower_shiny/power_study.json")
+        st.session_state.influence_data = read_json_file("./scPower_shiny/power_study.json")'''
 
     # Create scatter plot
     with st.expander("General Parameters", expanded=True):
@@ -421,7 +421,10 @@ def perform_analysis():
         # Remove the temporary file
         os.unlink(temp_file_path)
 
-
+        if st.session_state.scatter_data is None:
+            st.session_state.scatter_data = json.loads(result.stdout)
+        if st.session_state.influence_data is None:
+            st.session_state.influence_data = json.loads(result.stdout)
 
 
         
