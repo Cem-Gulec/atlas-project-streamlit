@@ -492,7 +492,7 @@ def main():
         st.session_state.page = "Home"
 
     st.sidebar.title("Navigation")
-    pages = ["Home", "Description", "Tutorial", "Detect DE/eQTL Genes", "Detect Cell Types", "License Statement"]
+    pages = ["Home", "Description", "Tutorial", "Detect DE/eQTL Genes", "License Statement"]
     page = st.sidebar.radio("", pages, index=pages.index(st.session_state.page))
 
     if page != st.session_state.page:
